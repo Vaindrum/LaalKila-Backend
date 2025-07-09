@@ -3,9 +3,11 @@ dotenv.config();
 
 import express from 'express';
 import cors from 'cors';
+import http from 'http';
+import { WebSocketServer } from 'ws';
 import { query } from './lib/db.js'; 
 import guestRouter from './routes/guest.js';
-
+import playerRouter from './routes/player.js'
 
 
 (async () => {
@@ -22,5 +24,6 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/guest', guestRouter);
+app.use('/api/player', playerRouter);
 
 app.listen(4000, () => console.log('Server running on port 4000'));
